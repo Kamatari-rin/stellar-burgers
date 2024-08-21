@@ -1,21 +1,21 @@
-import { FC, useMemo } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
-import { TIngredient } from '@utils-types';
+import { TIngredient, TOrder } from '@utils-types';
+import { useParams } from 'react-router-dom';
+import { useSelector } from '../../services/store';
+import ingredientsDepot from '../../services/ingredientsSlice';
+import { getOrderByNumberApi } from '@api';
+import feedDepot from '../../services/feedSlice';
 
 export const OrderInfo: FC = () => {
-  /** TODO: взять переменные orderData и ingredients из стора */
-  const orderData = {
-    createdAt: '',
-    ingredients: [],
-    _id: '',
-    status: '',
-    name: '',
-    updatedAt: 'string',
-    number: 0
-  };
+  const { number: numberStr } = useParams<{ number: string }>();
+  const number = numberStr === undefined ? undefined : parseInt(numberStr);
+  if (number === undefined || isNaN(number)) return null;
 
-  const ingredients: TIngredient[] = [];
+  const [orderData, setOrderData] = useState<TOrder | undefined>(undefined);
+
+  const ingredients = useSelector(ingredientsDepot.selectIngredients) || [];
 
   /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {
@@ -58,6 +58,14 @@ export const OrderInfo: FC = () => {
       total
     };
   }, [orderData, ingredients]);
+
+  useEffect(() => {
+    if (orderData && orderData.number === number) return;
+
+    getOrderByNumberApi(number).then((res) => {
+      setOrderData(feedDepot.getOrderByNumber(res.orders, number));
+    });
+  }, [orderData]);
 
   if (!orderInfo) {
     return <Preloader />;

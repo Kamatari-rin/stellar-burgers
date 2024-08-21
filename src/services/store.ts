@@ -5,15 +5,24 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
+import authDepot from './authSlice';
+import feedDepot from './feedSlice';
+import ingredientsDepot from './ingredientsSlice';
+import orderDepot from './orderSlice';
+import userOrdersDepot from './userOrdersSlice';
 
-const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
-
-const store = configureStore({
-  reducer: rootReducer,
+export const store = configureStore({
+  reducer: {
+    ingredients: ingredientsDepot.reducer,
+    order: orderDepot.reducer,
+    auth: authDepot.reducer,
+    feed: feedDepot.reducer,
+    userOrders: userOrdersDepot.reducer
+  },
   devTools: process.env.NODE_ENV !== 'production'
 });
 
-export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
 
