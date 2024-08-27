@@ -95,31 +95,23 @@ export const loginLocally = createAsyncThunk('auth/loginLocally', () => {
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
   (data: TLoginData) =>
-    loginUserApi(data)
-      .then((res) => {
-        setCookie('accessToken', res.accessToken);
-        localStorage.setItem('refreshToken', res.refreshToken);
-        localStorage.setItem('user', JSON.stringify(res.user));
-        return res;
-      })
-      .catch((err) => {
-        throw err;
-      })
+    loginUserApi(data).then((res) => {
+      setCookie('accessToken', res.accessToken);
+      localStorage.setItem('refreshToken', res.refreshToken);
+      localStorage.setItem('user', JSON.stringify(res.user));
+      return res;
+    })
 );
 
 export const registerUser = createAsyncThunk(
   'auth/register',
   (data: TRegisterData) =>
-    registerUserApi(data)
-      .then((res) => {
-        setCookie('accessToken', res.accessToken);
-        localStorage.setItem('refreshToken', res.refreshToken);
-        localStorage.setItem('user', JSON.stringify(res.user));
-        return res;
-      })
-      .catch((err) => {
-        throw err;
-      })
+    registerUserApi(data).then((res) => {
+      setCookie('accessToken', res.accessToken);
+      localStorage.setItem('refreshToken', res.refreshToken);
+      localStorage.setItem('user', JSON.stringify(res.user));
+      return res;
+    })
 );
 
 export const updateUser = createAsyncThunk('auth/updateUser', updateUserApi);

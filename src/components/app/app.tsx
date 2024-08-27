@@ -22,7 +22,7 @@ import { loginLocally } from '../../services/authSlice';
 
 const App = () => {
   const location = useLocation();
-  const backgroundLocation = location.state?.backgroundLocation;
+  const backgroundLocation = location.state?.background;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
