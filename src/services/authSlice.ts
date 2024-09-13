@@ -103,6 +103,7 @@ export const loginUser = createAsyncThunk(
     })
 );
 
+//
 export const registerUser = createAsyncThunk(
   'auth/register',
   (data: TRegisterData) =>
