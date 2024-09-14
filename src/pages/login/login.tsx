@@ -3,7 +3,6 @@ import { LoginUI } from '@ui-pages';
 import { useDispatch, useSelector } from '../../services/store';
 import authDepot, { loginUser } from '../../services/authSlice';
 import { Preloader } from '../../components/ui/preloader';
-import { useForm } from 'src/hooks/useForm';
 
 export const Login: FC = () => {
   const dispatch = useDispatch();

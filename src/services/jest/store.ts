@@ -4,11 +4,11 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
-import authDepot from '../services/authSlice';
-import feedDepot from '../services/feedSlice';
-import ingredientsDepot from '../services/ingredientsSlice';
-import orderDepot from '../services/orderSlice';
-import userOrdersDepot from '../services/userOrdersSlice';
+import authDepot from '../authSlice';
+import feedDepot from '../feedSlice';
+import ingredientsDepot from '../ingredientsSlice';
+import orderDepot from '../orderSlice';
+import userOrdersDepot from '../userOrdersSlice';
 
 export const store = configureStore({
   reducer: {

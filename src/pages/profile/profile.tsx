@@ -1,6 +1,6 @@
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from '../../app/store';
+import { useDispatch, useSelector } from '../../services/jest/store';
 import { Preloader } from '../../components/ui';
 import authDepot, { updateUser } from '../../services/authSlice';
 

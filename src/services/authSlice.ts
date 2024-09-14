@@ -5,7 +5,7 @@ import {
   registerUserApi,
   updateUserApi,
   logoutApi
-} from '@api';
+} from '../utils/burger-api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TUser } from '@utils-types';
 import { setCookie, deleteCookie } from '../utils/cookie';

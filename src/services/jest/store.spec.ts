@@ -1,12 +1,10 @@
 import { PayloadAction, configureStore, createAction } from '@reduxjs/toolkit';
-import { TIngredient } from '../utils/types';
-import authDepot from '../services/authSlice';
-import feedDepot from '../services/feedSlice';
-import ingredientsDepot, {
-  fetchIngredients
-} from '../services/ingredientsSlice';
-import orderDepot from '../services/orderSlice';
-import userOrdersDepot from '../services/userOrdersSlice';
+import { TIngredient } from '../../utils/types';
+import authDepot from '../authSlice';
+import feedDepot from '../feedSlice';
+import ingredientsDepot, { fetchIngredients } from '../ingredientsSlice';
+import orderDepot from '../orderSlice';
+import userOrdersDepot from '../userOrdersSlice';
 
 type RootState = ReturnType<typeof store.getState>;
 
