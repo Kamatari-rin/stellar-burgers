@@ -8,6 +8,11 @@ const ingredientsCategoryTitleCySelector =
   '*[data-cy="ingredients-category-title"]';
 const burgerIngredientCySelector = '*[data-cy="burger-ingredient"]';
 const constructorElementCySelector = '*[data-cy="constructor-element"]';
+
+const noIngredientsSelector = `[data-cy=no_ingredients_text]`;
+const noBunSelector1 = `[data-cy=no_bun_text_1]`;
+const noBunSelector2 = `[data-cy=no_bun_text_2]`;
+
 const burgerConstructorElementCySelector =
   '*[data-cy="burger-constructor-element"]';
 const modalCySelector = '*[data-cy="modal"]';
@@ -42,11 +47,18 @@ describe('Добавление ингредиентов', () => {
         .get(burgerIngredientCySelector)
         .as('ingredientsCategory');
 
+      // проверяем что булочка не добавлена
+      cy.get(noBunSelector1).contains('Выберите булки');
+      cy.get(noBunSelector2).contains('Выберите булки');  
+
       // добавляем булочку
       cy.get('@ingredientsCategory')
         .filter(`:contains("${buns[0].name}")`)
         .contains('Добавить')
         .click();
+      
+      // // проверяем что ингридиент не добавлен  
+      cy.get(noIngredientsSelector).contains('Выберите начинку'); 
 
       // добавляем ингредиент
       cy.get('@ingredientsCategory')
