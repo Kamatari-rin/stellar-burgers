@@ -1,8 +1,8 @@
-import { Preloader } from '@ui';
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
-import authDepot, { updateUser } from '../../services/authSlice';
 import { useDispatch, useSelector } from '../../services/store';
+import { Preloader } from '../../components/ui';
+import authDepot, { updateUser } from '../../services/authSlice';
 
 export const Profile: FC = () => {
   const dispatch = useDispatch();
@@ -65,4 +65,6 @@ export const Profile: FC = () => {
       updateUserError={error || undefined}
     />
   );
+
+  return null;
 };
